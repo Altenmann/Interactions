@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Alpha</title>
+        <style>
+            body {
+                background-color: #d8d8aa;
+            }
+
+            .pointGenerator {
+                border: 1px solid black;
+            }
+
+            .sliders {
+                margin: 5px;
+                padding: 10px;
+                float: left;
+                border: 1px solid black;
+            }
+
+            .inputs {
+                display: block;
+                margin-bottom: 5px;
+                width: 200px;
+                border: 2px solid black;
+            }
+
+            .inputs .hover {
+                display: block;
+                margin: 5px;
+                width: 50px;
+                height: 50px;
+                border: 2px solid black;
+            }
+
+            .hover div {
+                display: none;
+                padding: 8px;
+                margin: 5px;
+                border: 2px solid black;
+                background: gray;
+            }
+
+            .hover div p {
+                padding: 4px;
+                background: white;
+            }
+
+            .hover:hover div {
+                display: inline-block;
+            }
+
+            .inputs .number {
+                width: 50px;
+            }
+        </style>
+    </head>
+
+    <body id="body">
+        <div class="sliders" id="pointParams">
+
+            <p><input type="checkbox" id="randomCheck">Random</p>
+
+            <div class="inputs">
+            
+                <div class="hover" id="apperanceHover">
+                    <div id="apperance">
+                        <p><input type="number" min="0" max="255" placeholder="0"
+                            class="number" id="rNum" onchange="changeValue('rSlide', this.value)">
+                            <input type="range" min="0" max="255" placeholder="0"
+                            class="slider" id="rSlide" onchange="changeValue('rNum', this.value)">R</p>
+        
+                        <p><input type="number" min="0" max="255" placeholder="0"
+                            class="number" id="gNum" onchange="changeValue('gSlide', this.value)">
+                            <input type="range" min="0" max="255"  placeholder="0"
+                            class="slider" id="gSlide" onchange="changeValue('gNum', this.value)">G</p>
+        
+                        <p><input type="number" min="0" max="255" placeholder="0"
+                            class="number" id="bNum" onchange="changeValue('bSlide', this.value)">
+                            <input type="range" min="0" max="255" placeholder="0"
+                            class="slider" id="bSlide" onchange="changeValue('bNum', this.value)">B</p>
+
+                        <p><input type="number" min="1" max="20" value="10" placeholder="10"
+                            class="number" id="radiusNum" onchange="changeValue('radiusSlide', this.value)">
+                            <input type="range" min="1" max="20" value="10" placeholder="10"
+                            class="slider" id="radiusSlide" onchange="changeValue('radiusNum', this.value)">Size</p>
+                    </div>
+                </div>
+                
+                <div class="hover">
+                    <div id="velocity">
+                        <p><input type="number" min="-10" max="10" step=".1" placeholder="0"
+                            class="number" id="xVelNum" onchange="changeValue('xVelSlide', this.value)">
+                            <input type="range" min="-10" max="10" step=".1" placeholder="0"
+                            class="slider" id="xVelSlide" onchange="changeValue('xVelNum', this.value)">XVel</p>
+
+                        <p><input type="number" min="-10" max="10" step=".1" placeholder="0"
+                            class="number" id="yVelNum" onchange="changeValue('yVelSlide', this.value)">
+                            <input type="range" min="-10" max="10" step=".1" placeholder="0"
+                            class="slider" id="yVelSlide" onchange="changeValue('yVelNum', this.value)">YVel</p>
+                    </div>
+                </div>
+
+                <div class="hover">
+                    <div id="flowRate">
+                        <p><input type="number" min="0" max="5" step=".05" placeholder="0"
+                            class="number" id="flowRateRgbNum" onchange="changeValue('flowRateRgbSlide', this.value)">
+                            <input type="range" min="0" max="5" step=".05" placeholder="0"
+                            class="slider" id="flowRateRgbSlide" onchange="changeValue('flowRateRgbNum', this.value)">Flow Rate RGB</p>
+
+                        <p><input type="number" min="0" max="1" step=".01" placeholder="0"
+                            class="number" id="flowRateXVelNum" onchange="changeValue('flowRateXVelSlide', this.value)">
+                            <input type="range" min="0" max="1" step=".01" placeholder="0"
+                            class="slider" id="flowRateXVelSlide" onchange="changeValue('flowRateXVelNum', this.value)">Flow Rate XVel</p>
+
+                        <p><input type="number" min="0" max="1" step=".01" placeholder="0"
+                            class="number" id="flowRateYVelNum" onchange="changeValue('flowRateYVelSlide', this.value)">
+                            <input type="range" min="0" max="1" step=".01" placeholder="0"
+                            class="slider" id="flowRateYVelSlide" onchange="changeValue('flowRateYVelNum', this.value)">Flow Rate XVel</p>
+                    </div>
+                </div>
+
+                <div class="hover">
+                    <div id="special">
+                        <p><input type="number" min="0" max="1" step=".01" placeholder="0.5"
+                            class="number" id="roiNum" onchange="changeValue('roiSlide', this.value)">
+                            <input type="range" min="0" max="1" step=".01" placeholder="0.5"
+                            class="slider" id="roiSlide" onchange="changeValue('roiNum', this.value)">ROI</p>
+
+                        <p><input type="number" min="0" max="10" step="1" placeholder="1"
+                            class="number" id="leadershipNum" onchange="changeValue('leadershipSlide', this.value)">
+                            <input type="range" min="0" max="10" step="1" placeholder="1"
+                            class="slider" id="leadershipSlide" onchange="changeValue('leadershipNum', this.value)">Leadership</p>
+                    </div>
+                </div>    
+
+            </div>
+        </div>
+
+        <script src="js/worlds/world.js"></script>
+        <script src="js/worlds/inputs/inputs.js"></script>
+
+        <script src="js/points/point.js"></script>
+
+        <script src="js/extra/utils.js"></script>
+        <script src="js/extra/html.js"></script>
+
+        <script src="js/main/canvas.js"></script>
+        <script src="js/main/main.js"></script>
+    </body>
+</html>
